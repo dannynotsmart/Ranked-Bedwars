@@ -33,8 +33,7 @@ class RankedBedwarsBot(commands.Bot):
         for extension in initial_extensions:
             await self.load_extension(extension)
 
-        await self.db.connect()
-        await self.db.load_cache()
+        await self.db.setup()
 
     async def start(self):
         async with aiohttp.ClientSession() as session:
@@ -43,5 +42,4 @@ class RankedBedwarsBot(commands.Bot):
 
     async def on_ready(self):
         print(f"{self.user} | {self.user.id} is ready.")
-
 
